@@ -49,4 +49,10 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+//test
+router.get("/", async (req, res) => {
+  res.send("hi");
+});
+
+
 module.exports = router;
