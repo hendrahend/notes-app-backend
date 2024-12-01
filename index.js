@@ -8,7 +8,7 @@ const app = express();
 
 // Middleware
 const corsOptions = {
-  origin: *,  // Change this to your actual frontend URL
+  origin: "*",  // Change this to your actual frontend URL
   methods: ["GET", "POST", "PUT", "DELETE"],  // Allow specific HTTP methods
   allowedHeaders: ["Content-Type", "Authorization"],  // Allow headers
 };
