@@ -7,7 +7,12 @@ require("dotenv").config();
 const app = express();
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: *,  // Change this to your actual frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"],  // Allow specific HTTP methods
+  allowedHeaders: ["Content-Type", "Authorization"],  // Allow headers
+};
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // Connect to MongoDB
