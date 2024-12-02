@@ -35,4 +35,4 @@ app.listen(PORT, () => {
 });
 
 //Update for deployment
-module.exports = (req, res) => app(req, res);
+export default (req, res) => app(req, res);
