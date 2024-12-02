@@ -1,6 +1,11 @@
 {
   "version": 2,
-  
+  "builds": [
+    {
+      "src": "/api/notes/index.js",
+      "use": "@vercel/node"
+    }
+  ],
   "rewrites": [
     { 
       "source": "/(.*)", "destination": "/api/notes/index.js" 
