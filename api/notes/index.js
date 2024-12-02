@@ -11,22 +11,22 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Connect to MongoDB
-// mongoose
-//   .connect(process.env.MONGO_URI)
-//   .then(() => {
-//     console.log("MongoDB connected");
-//   })
-//   .catch((err) => {
-//     console.error("Error connecting to MongoDB:", err);
-//   });
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("MongoDB connected");
+  })
+  .catch((err) => {
+    console.error("Error connecting to MongoDB:", err);
+  });
 
 // Routes
 app.get("/", async (req, res) => {
   res.send("Halo..");
 });
 
-// const noteRoutes = require("./routes/notes");
-// app.use("/api/notes", noteRoutes);
+const noteRoutes = require("../../routes/notes");
+app.use("/api/notes", noteRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;
