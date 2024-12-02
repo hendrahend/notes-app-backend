@@ -1,6 +1,6 @@
-{ 
-  "version": 2, 
+{
+  "version": 2,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/api/notes/app.js" }
-  ] 
+    { "source": "/(.*)", "destination": "/api/notes" }
+  ]
 }
