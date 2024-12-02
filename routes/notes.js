@@ -1,6 +1,7 @@
-const express = require("express");
+import express from "express";
+import Note from "../models/Note.js";
+
 const router = express.Router();
-const Note = require("../models/Note");
 
 // Create a new note
 router.post("/", async (req, res) => {
@@ -38,21 +39,18 @@ router.delete("/:id", async (req, res) => {
 // Update a note by ID
 router.put("/:id", async (req, res) => {
   try {
-    const updatedNote = await Note.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
+    const updatedNote = await Note.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
     res.json(updatedNote);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-//test
+// Test route
 router.get("/", async (req, res) => {
   res.send("hi");
 });
 
-
-module.exports = router;
+export default router;

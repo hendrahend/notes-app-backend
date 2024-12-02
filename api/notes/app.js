@@ -25,7 +25,7 @@ app.get("/", async (req, res) => {
   res.send("Halo..");
 });
 
-const noteRoutes = require("../routes/notes");
+const noteRoutes = require("../../routes/notes");
 app.use("/api/notes", noteRoutes);
 
 // Start the server

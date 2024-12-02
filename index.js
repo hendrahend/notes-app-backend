@@ -1,18 +1,16 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-require("dotenv").config();
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import bodyParser from "body-parser";
+import dotenv from "dotenv";
+import noteRoutes from "./routes/notes.js";
+
+dotenv.config();
 
 const app = express();
 
 // Middleware
-const corsOptions = {
-  origin: "*",  // Change this to your actual frontend URL
-  methods: ["GET", "POST", "PUT", "DELETE"],  // Allow specific HTTP methods
-  allowedHeaders: ["Content-Type", "Authorization"],  // Allow headers
-};
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 
 // Connect to MongoDB
@@ -26,12 +24,11 @@ mongoose
   });
 
 // Routes
+app.use("/api/notes", noteRoutes);
+
 app.get("/", async (req, res) => {
   res.send("Halo..");
 });
-
-const noteRoutes = require("./routes/notes");
-app.use("/api/notes", noteRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;
@@ -39,5 +36,4 @@ app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
 
-//Update for deployment
-module.exports = (req, res) => app(req, res);
+export default (req, res) => app(req, res);
